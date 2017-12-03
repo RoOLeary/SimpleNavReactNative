@@ -1,0 +1,52 @@
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
+
+const HomeScreen = ({ navigation }) => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Home Screen</Text>
+    <Button
+      onPress={() => navigation.navigate('Details')}
+      title="Go to details"
+    />
+  </View>
+);
+
+const DetailsScreen = ({ navigation }) => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Details Screen</Text>
+    <Button
+      onPress={() => navigation.navigate('Persons')}
+      title="Go to peeps"
+    />
+  </View>
+);
+
+const PersonList = () => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Persons List</Text>
+  </View>
+);
+
+const RootNavigator = StackNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      headerTitle: 'Home',
+    },
+  },
+  Details: {
+    screen: DetailsScreen,
+    navigationOptions: {
+      headerTitle: 'Details',
+    },
+  },
+  Persons: {
+    screen: PersonList,
+    navigationOptions: {
+      headerTitle: 'Person List',
+    },
+  },
+});
+
+export default RootNavigator;
